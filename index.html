@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js" lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Landing Austria Drei</title>
+    <link rel="apple-touch-icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+
+    <meta name="HandheldFriendly" content="true"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen,print">
+
+</head>
+<body class="austria-drei">
+<main>
+    <style>
+        .landing-page-basic .element-wrapper {
+            z-index: 1;
+        }
+
+        .landing-page-basic .background-element-wrapper {
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            z-index: 0;
+        }
+    </style>
+    <div class="landing-page-container "
+         style="display: grid;
+             grid-template-columns: repeat(9, 11.11111111vw);
+             grid-template-rows: repeat(17, 6.25vh);
+             background-color: #101010;
+             color: #ffffff">
+        <div class="element-wrapper" style="grid-area:1 / 1 / 9 / 10;z-index:0">
+            <div class="background bottom austria-banner" ></div>
+        </div>
+        <div class="element-wrapper" style="grid-area:1 / 6 / 3 / 10;z-index:1">
+            <div class="century-logo"><img src="img/logo-century-white.webp" alt="Century Logo"></div>
+        </div>
+        <div class="element-wrapper" style="grid-area:9 / 1 / 10 / 10;z-index:1">
+            <div class="over-btn-text">
+                Sie erhalten 30.000 Edelsteine pro Monat zur Nutzung im Spiel. Abonnement für 5,99 € inkl. MwSt pro Woche.
+            </div>
+        </div>
+        <div class="element-wrapper" style="grid-area:10 / 1 / 14 / 10 ;z-index:1">
+            <div class="austria-button-wrapper">
+                <form action="" method="post">
+                    <div class="form-group phone-prefix">
+                        <div class="attention-text">Geben Sie die PIN ein:</div>
+                        <div class="input-holder pin-holder">
+                            <input data-inputmask = " 'mask' : '9999'" type="tel" class="form-control phone-input" id="pin-input" value="" placeholder="XXXX" name="enter_pin" />
+
+                        </div>
+                    </div>
+                    <button
+                            type="submit"
+                            id="send-pin-button"
+                            class="send-phone-button disabled"
+                    >
+                        <span>KAUFEN</span><i class="download-icon"></i>
+                    </button>
+                    <a
+                            href=""
+                            class="DCBProtection"
+                            style="display: none"
+                    ></a>
+                </form>
+            </div>
+        </div>
+        <div class="element-wrapper" style="grid-area:14 / 1 / 17/ 10;z-index:1">
+            <div class="austria-terms">
+                Mit Klick auf "Kaufen" braunftrafe ich Century mit der sofortigen Leistungserbringung. Ich nehme ausdrücklich zur Kenntnis, dass ich kein <a href="/right_of_withdrawal" class="text-link" target="_blank">Rückktrittsrecht</a> habe und der Preis über meine Drei Mobilfunkrechnung abgerechnet wird. Das Abonnement kann joderzeit gekündigt werden.
+            </div>
+        </div>
+        <div class="element-wrapper" style="grid-area:17 / 1 / 18 / 10;z-index:1">
+            <button class="backwards-link" onclick="history.back()">
+                Abbrechen
+            </button>
+        </div>
+        <div class="element-wrapper" style="grid-area:18 / 1 / 21 / 10;z-index:1; max-width: 100%; overflow: hidden;">
+            <div class="austria-footer">
+                <div class="footer-menu">
+                    <div class="footer-menu-row">
+                        <a href="">AGB</a>
+                        <a href="">Impressum</a>
+                        <a href="">Datenschutz</a>
+                    </div>
+                    <div class="footer-menu-row">
+                        <a href="">Kontakt</a>
+                        <a href="">Rücktrittsrecht</a>
+                        <a href="">Kündigung</a>
+                    </div>
+                </div>
+                <div class="copyright austria-copyright">
+                    ©2023 Alle Rechte vorbehalten.
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== 'complete') return;
+        const pinInput = document.querySelector('#pin-input');
+        const sendPinBtn = document.querySelector('#send-pin-button')
+
+        document.addEventListener('keyup', function (e) {
+            const text = e.target.value.replace(/\D/g, "").trim();
+            const parts = [text.substr(0, 4)];
+            e.target.value = parts.join(' ').trim();
+
+            pinInput.classList.remove('not-validated');
+            pinInput.classList.remove('validated');
+            sendPinBtn.classList.remove('disabled');
+
+            sendPinBtn.disabled = pinInput.value.replace(/[ _]/g, '').length !== 4
+            sendPinBtn.classList.add(pinInput.value.replace(/[ _]/g, '').length !== 4 ? 'disabled' : '')
+
+            pinInput.classList.add(pinInput.value.replace(/[ _]/g, '').length !== 4 ? 'not-validated' : 'validated')
+        });
+
+        sendPinBtn.onClick(function (e) {
+            e.preventDefault();
+            if (pinInput.value.replace(/[ _]/g, '').length < 10) {
+                pinInput.parentElement.classList.remove('validated');
+                pinInput.parentElement.classList.add('not-validated');
+                sendPinBtn.disabled = false
+                e.target.classList.add('disabled');
+            }
+        })
+    }
+</script>
+</body>
+</html>
