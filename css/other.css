@@ -616,7 +616,7 @@ button.player-popup i {
     width: 31px;
     height: 31px;
     margin-top: -3px;
-    background-image: url("../../images/login-check.webp");
+    background-image: url("../img/login-check.webp");
 }
 
 .share-btn {
