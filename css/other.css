@@ -290,10 +290,10 @@ footer.inner-footer {
     list-style: none;
 }
 .footer-menu ul li {
-    line-height: 22px;
+    line-height: 26px;
 }
 .footer-menu ul li + li {
-    margin-left: 10px;
+    margin-left: 12px;
 }
 .footer-menu ul li a {
     text-decoration: underline;
